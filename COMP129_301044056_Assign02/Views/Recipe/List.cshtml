@@ -1,0 +1,8 @@
+﻿@model RecipesListViewModel
+@foreach (var p in Model.Recipes)
+{
+    <div>
+        <h3>@p.Name</h3>
+    </div>
+}
+<div page-model="@Model.PagingInfo" page-action="List"></div>
