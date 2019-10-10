@@ -5,12 +5,30 @@
 }
 
 <h2>InsertPage</h2>
-@await Html.PartialAsync("RecipeDetails")
-<form id="form1" method="post">
+@await Html.PartialAsync("RecipeDetails", Model)
+<form id="form1" asp-action="AddRecipe"
+      asp-controller="Recipe" method="post">
+    <div>
+        @Html.LabelFor(model => model.ID)
+        @Html.TextBoxFor(model => model.ID)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Category)
+        @Html.TextBoxFor(model => model.Category)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Cuisine)
+        @Html.TextBoxFor(model => model.Cuisine)
+    </div>
+
     <button type="submit" style="float:right">
         Save
     </button>
-    <button type="button" style="float:right">
+    <button type="button" style="float:right" onclick="location.href='@Url.Action("")'">
         Cancel
     </button>
 </form>

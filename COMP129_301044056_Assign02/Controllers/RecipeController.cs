@@ -17,6 +17,7 @@ namespace COMP229_301044056_Assign02.Controllers
         public RecipeController(IRecipeRepository repo)
         {
             repository = repo;
+            System.Diagnostics.Debug.WriteLine("First step");
         }
         public ViewResult List(int recipePage = 1)
                 => View(new RecipesListViewModel
@@ -43,11 +44,24 @@ namespace COMP229_301044056_Assign02.Controllers
         }
         public ViewResult InsertPage(Recipe recipe)
         {
+            recipe.ID = 1001;
+            recipe.Category = "Test";
+            recipe.Ingredients = "Heavy cream, Unflavored gelatin, Milk , White Sugar, Vanilla extract";
+            System.Diagnostics.Debug.WriteLine("Second Step");
             return View(recipe);
         }
         public ViewResult UserPage()
         {
             return View();
+        }
+        public RedirectToActionResult AddRecipe(Recipe recipe)
+        {
+            System.Diagnostics.Debug.WriteLine("1.Saving  recipe?");
+            repository.AddItem(recipe);
+            System.Diagnostics.Debug.WriteLine(recipe.ID);
+            System.Diagnostics.Debug.WriteLine(recipe.Name);
+            System.Diagnostics.Debug.WriteLine(recipe.Cuisine);
+            return RedirectToAction("", repository);
         }
     }
 }

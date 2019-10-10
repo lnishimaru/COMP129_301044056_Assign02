@@ -8,5 +8,7 @@ namespace COMP229_301044056_Assign02.Models
     public interface IRecipeRepository
     {
         IQueryable<Recipe> Recipes { get; }
+
+        void AddItem(Recipe recipe);
     }
 }

@@ -13,5 +13,10 @@ namespace COMP229_301044056_Assign02.Models
             context = ctx;
         }
         public IQueryable<Recipe> Recipes => context.Recipes;
+
+        public void AddItem(Recipe recipe)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
